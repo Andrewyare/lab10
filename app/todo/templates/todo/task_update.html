@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+{% from "_render_field.html" import render_field %}
+
+<div class="col-6 mx-auto">
+
+	<div class="card">
+
+		<div class="card-header">
+			<h5>Edit</h5>
+		</div>
+		<div class="card-body">
+			<form action="{{ url_for('to_do.task_update', id=task_id) }}" method="post" class="">
+				{{ form.hidden_tag() }}
+				{% for field in form if field not in [form.submit, form.hidden_tag, form.csrf_token] %}
+				{{render_field(field, class="form-control f-input")}}
+				{% endfor %}
+				{{ form.submit(class_="form-control btn btn-primary") }}
+			</form>
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}

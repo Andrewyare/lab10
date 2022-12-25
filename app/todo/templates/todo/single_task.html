@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<table class="table">
+	<tbody>
+		{% for label, text_data in task_detail.items() %}
+		<tr>
+			<td>{{ label }}</td>
+			{% if label == "Priority" or label == "Progress" %}
+			<td>{{ text_data.name }}</td>
+			{% else %}
+			<td>{{ text_data|safe }}</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+		<tr>
+			<td>
+				{% for user in assigned %}
+				<div class="row">
+					<div class="col-2">
+						<a class="link-dark" href="{{ url_for('account.account', user_id=user.id) }}">{{
+							user.username }}</a>
+					</div>
+					<div class="col-9"></div>
+				</div>
+				{% endfor %}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a class="btn btn-primary" href="{{ url_for('todo.task_update', id=id) }}">Update task</a>
+			</td>
+			<td>
+				<a class="btn btn-danger" href="{{ url_for('todo.task_delete', id=id) }}">Delete task</a>
+			</td>
+
+		</tr>
+	</tbody>
+</table>
+
+{% endblock %}
