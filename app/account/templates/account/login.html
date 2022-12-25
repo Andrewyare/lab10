@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+{% from "_render_field.html" import render_field %}
+
+<div class="col-6 mx-auto">
+
+	<div class="card">
+
+		<div class="card-header">
+			<h5>Form</h5>
+		</div>
+
+		<div class="card-body">
+			<form method="post">
+				{{ form.csrf_token }}
+				{{ render_field(form.email, class="form-control")}}
+				{{ render_field(form.password, class="form-control")}}
+				{{ render_field(form.remember)}}
+				{{ form.submit(class="btn btn-primary") }}
+			</form>
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}

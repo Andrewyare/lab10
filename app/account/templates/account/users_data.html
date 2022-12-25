@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<table class="table">
+	<thead class="table-light table-bordered">
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">Name</th>
+			<th scope="col">Email</th>
+		</tr>
+	</thead>
+	{% for data in all_users %}
+	<tbody>
+		<thead class="table-primary table-bordered">
+			<tr>
+				<td>{{data.id}}</td>
+				<td>{{data.name}}</td>
+				<td>{{data.email}}</td>
+			</tr>
+		</thead>
+	</tbody>
+	{% endfor%}
+</table>
+{% endblock %}
